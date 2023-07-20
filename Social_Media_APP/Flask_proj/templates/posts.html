@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='posts.css') }}">
+
+  <div class="container">
+    <h2 class="page-title">Posts</h2>
+    {% if posts %}
+      <ul class="post-list">
+        {% for post in posts %}
+          <li class="post">
+            <div class="post-header">
+              <div class="profile-picture">
+                <img src="{{ url_for('static', filename=post.user.profile_image) }}" alt="Profile Picture">
+              </div>
+              <div class="post-details">
+                <h3>{{ post.user.first_name }} {{ post.user.last_name }}</h3>
+                <p>{{ post.created_at }}</p>
+              </div>
+            </div>
+            <div class="post-content">
+              <p>{{ post.content }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-posts">No posts found.</p>
+    {% endif %}
+  </div>
+{% endblock %}

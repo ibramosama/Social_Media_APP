@@ -1,0 +1,103 @@
+/* External CSS file - register.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px; /* Adjust the padding values to decrease the height */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.register-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #1877F2;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-control {
+  width: 95%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #1877F2;
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.2);
+}
+
+.form-control-file {
+  display: block;
+}
+
+.btn-primary {
+  background-color: #1877F2;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.login-link {
+  color: #1877F2;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}

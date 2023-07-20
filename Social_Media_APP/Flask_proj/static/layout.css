@@ -1,0 +1,77 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #4267B2; /* Facebook blue */
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    max-width: 100%; /* Add this line to maximize the width */
+}
+
+.navbar-logo {
+    font-size: 1.5em;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar-logo i {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 5px;
+    margin-right: 20px;
+    flex: 1; /* Add this line to make the search bar take remaining space */
+}
+
+.navbar-search input[type="text"] {
+    border: none;
+    padding: 5px;
+    outline: none;
+    flex: 1; /* Add this line to make the input field expand */
+}
+
+.navbar-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar-menu ul li {
+    margin-right: 10px;
+}
+
+.navbar-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+footer {
+    background-color: #f0f2f5;
+    padding: 20px;
+    text-align: center;
+}
+
+.padding{
+    padding: 1.2rem;
+}

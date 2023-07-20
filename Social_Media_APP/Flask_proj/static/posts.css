@@ -1,0 +1,44 @@
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.post-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+}
+
+.post-details h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.post-details p {
+  margin: 0;
+}
+
+.post-content p {
+  margin: 0;
+}
+
+.no-posts {
+  font-style: italic;
+}

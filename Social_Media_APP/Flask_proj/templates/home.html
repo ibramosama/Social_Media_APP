@@ -1,0 +1,56 @@
+<!-- home.html -->
+
+{% extends 'layout.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+  <div class="post-form">
+    <h3>Create a New Post</h3>
+    <form method="POST" action="{{ url_for('home', privacy_mode=privacy_mode) }}">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.content.label }}
+        {{ form.content(class="form-control") }}
+        {% for error in form.content.errors %}
+          <span class="error">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        {{ form.privacy.label }}
+        {{ form.privacy(class="form-control") }}
+        {% for error in form.privacy.errors %}
+          <span class="error">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="privacy-modes">
+    <h3>Privacy Modes</h3>
+    <ul>
+      <li><a href="{{ url_for('home', privacy_mode='all') }}">All Posts</a></li>
+      <li><a href="{{ url_for('home', privacy_mode='friends') }}">Friends Only</a></li>
+    </ul>
+  </div>
+
+  <div class="post-list">
+    {% for post in posts %}
+      <div class="post">
+        <div class="post-header">
+          <a href="{{ url_for('profile', user_id=post.user.id) }}" class="post-user">{{ post.user.first_name }} {{ post.user.last_name }}</a>
+          <span class="post-date">{{ post.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+        </div>
+        <div class="post-content">{{ post.content }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

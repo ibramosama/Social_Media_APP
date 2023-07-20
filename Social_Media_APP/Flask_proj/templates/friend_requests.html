@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='static/friend_requests.css') }}"> -->
+<link rel="stylesheet" href="{{ url_for('static', filename='profile_photo.css') }}">
+
+<div class="container">
+  <h2 class="page-title">Friend Requests</h2>
+  {% if friend_requests %}
+  <ul class="friend-request-list">
+    {% for request in friend_requests %}
+    <li class="friend-request">
+      <div class="friend-request-info">
+        <div class="friend-details">
+          <h3>{{ request.sender.first_name }} {{ request.sender.last_name }}</h3>
+          <p>{{ request.sender.email }}</p>
+        </div>
+        <div class="profile-picture">
+          <img src="data:image/jpeg;base64,{{ request.user.profile_image | b64encode }}" alt="Profile Image">
+        </div>
+      </div>
+      <div class="friend-request-actions">
+        <form action="{{ url_for('handle_friend_request', request_id=request.id, action='accept') }}" method="POST">
+          <button type="submit" class="friend-request-btn">Accept</button>
+        </form>
+        <form action="{{ url_for('handle_friend_request', request_id=request.id, action='decline') }}" method="POST">
+          <button type="submit" class="friend-request-btn">Decline</button>
+        </form>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="no-requests">No friend requests found.</p>
+  {% endif %}
+
+
+
+
+
+  {% for user in users%}
+  <a href="{{ url_for('profile', user_id=user.id) }}">
+    <div class="friends-card">
+      <div class="friend-img">
+        <img src="data:image/jpeg;base64,{{ user.profile_image | b64encode }}"
+          alt="Profile Image">
+      </div>
+      <div class="friend-name">
+        {{ user.first_name }}
+        {{ user.last_name }}
+      </div>
+    </div>
+  </a>
+  {% endfor%}
+
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.friend-request-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.friend-request {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.friend-request-info {
+  display: flex;
+  align-items: center;
+}
+
+.friend-details h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.friend-details p {
+  margin: 0;
+}
+
+.friend-request-actions a {
+  margin-left: 10px;
+}
+
+.no-requests {
+  font-style: italic;
+}

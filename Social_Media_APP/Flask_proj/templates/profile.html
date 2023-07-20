@@ -1,0 +1,114 @@
+<!-- profile.html -->
+
+{% extends 'layout.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='profile_photo.css') }}">
+
+<div class="profile">
+  <div class="profile-header">
+    <div class="user-info">
+      <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+    </div>
+    {% if user.id == current_user.id %}
+    <a href="{{ url_for('edit_profile') }}" class="edit-profile-btn">Edit Profile</a>
+    {% else %}
+    {% if not current_user.is_friends_with(user) %}
+    {% if not current_user.has_friend_request(user) %}
+    <form action="{{ url_for('send_friend_request', user_id=user.id) }}" method="POST">
+      <button type="submit" class="friend-request-btn">Add Friend</button>
+    </form>
+    {% else %}
+    <form action="{{ url_for('cancel_friend_request', request_id=current_user.has_friend_request(user)) }}"
+      method="POST">
+      <button type="submit" class="friend-request-btn">Cancel Friend</button>
+    </form>
+    {% endif %}
+    {% else %}
+    <form action="{{ url_for('remove_friend', user_id=current_user.id, friend_id=user.id) }}" method="POST">
+      <button type="submit" class="friend-request-btn">Unfriend</button>
+    </form>
+    {% endif %}
+    {% endif %}
+  </div>
+  <div class="profile-content">
+    <div class="profile-sidebar">
+      <div class="profile-image">
+        {% if user.profile_image %}
+        <img src="data:image/jpeg;base64,{{ user.profile_image | b64encode }}" alt="Profile Image">
+        {% else %}
+        <img src="path_to_default_image" alt="Default Profile Image">
+        {% endif %}
+      </div>
+      <div class="profile-friends">
+        <h3>Friends</h3>
+        <ul class="friend-list">
+          {% for friendship in user.friendships %}
+          {% if user.get_friend_display(friendship) %}
+          <a href="{{ url_for('profile', user_id=user.get_friend_display(friendship).id) }}">
+            <div class="friends-card">
+              <div class="friend-img">
+                <img src="data:image/jpeg;base64,{{ user.get_friend_display(friendship).profile_image | b64encode }}"
+                  alt="Profile Image">
+              </div>
+              <div class="friend-name">
+                {{ user.get_friend_display(friendship).first_name }}
+                {{ user.get_friend_display(friendship).last_name }}
+              </div>
+            </div>
+          </a>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="profile-main">
+      <div class="user-data">
+        <h3>User Information</h3>
+        <ul class="user-data-list">
+          <li><strong>First Name:</strong> {{ user.first_name }}</li>
+          <li><strong>Last Name:</strong> {{ user.last_name }}</li>
+          <li><strong>Email:</strong> {{ user.email }}</li>
+        </ul>
+      </div>
+      <div class="posts">
+        <h3>{% if user.id == current_user.id %}All Posts{% else %}Public Posts{% endif %}</h3>
+        <ul class="post-list">
+          {% for post in posts %}
+          {% if user.id == current_user.id or (post.user_id == user.id and post.privacy == 'Public') %}
+          <li>
+            <div class="post-content">
+              {{ post.content }}
+            </div>
+            <div class="post-meta">
+               {{ post.privacy }}
+            </div>
+            <div class="post-meta">
+              Posted on {{ post.created_at }}
+            </div>
+            {% if current_user.id == post.user_id%}
+            <div class="post-meta">
+              <a href="{{ url_for('delete_post', post_id=post.post_id) }}">
+                <button>Delete</button>
+              </a>
+            </div>
+            <div class="post-meta">
+              <a href="{{ url_for('update_post', post_id=post.post_id) }}">
+                <button>Edit</button>
+              </a>
+            </div>
+            {% endif %}
+          </li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

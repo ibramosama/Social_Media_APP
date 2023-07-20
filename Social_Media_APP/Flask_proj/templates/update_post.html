@@ -1,0 +1,33 @@
+<!-- edit_profile.html -->
+
+{% extends 'layout.html' %}
+
+{% block title %}
+  Edit Post
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='edit_profile.css') }}">
+
+<div class="edit-profile">
+  <h2>Edit Profile</h2>
+  <form method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    <div class="form-group">
+      {{ form.content.label(class="form-label") }}
+      {{ form.content(class="form-control") }}
+      {% for error in form.content.errors %}
+      <p class="error-message">{{ error }}</p>
+      {% endfor %}
+    </div>
+    <div class="form-group">
+      {{ form.privacy.label(class="form-label") }}
+      {{ form.privacy(class="form-control") }}
+      
+    </div>
+    <div class="form-group">
+      <button type="submit" class="submit-button">Save Changes</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

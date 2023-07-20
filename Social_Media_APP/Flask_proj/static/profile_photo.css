@@ -1,0 +1,28 @@
+
+/* Profile friends */
+.friends-card {
+    padding: 0.5rem;
+    border-radius: 20px;
+    display: flex;
+    border: solid 0.2px rgb(130, 177, 232);
+    width: 300px;
+    margin: auto;
+  }
+  
+  .friend-img{
+    width: 30%;
+    height: 50px;
+    border-radius: 20px;
+  }
+  
+  .friend-img > img{
+    object-fit: contain;
+    width: 70%;
+    border-radius: 50%;
+    /* height: 50px; */
+  }
+  .friend-name {
+    width: 80%;
+    font-weight: bold;
+    padding-top: 10px;
+  }

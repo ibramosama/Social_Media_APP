@@ -1,0 +1,135 @@
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Post Form */
+.post-form {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.post-form h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.post-form textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.post-form .form-group {
+  text-align: center;
+}
+
+.post-form button {
+  text-align: center;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.post-form button:hover {
+  background-color: #145491;
+}
+
+/* Privacy Modes */
+.privacy-modes {
+  margin-bottom: 20px;
+}
+
+.privacy-modes h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.privacy-modes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.privacy-modes li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.privacy-modes li a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.privacy-modes li a:hover {
+  background-color: #eee;
+}
+
+/* Post List */
+.post-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.post {
+  position: relative;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.post-date {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #777;
+}
+
+.post-content {
+  text-align: center;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.post-user {
+  font-weight: bold;
+  margin-right: 10px;
+  text-decoration: none; /* Add text-decoration property */
+  color: #1877f2; /* Add color for link */
+}
+
+.post-user:hover {
+  text-decoration: underline; /* Add underline on hover */
+}

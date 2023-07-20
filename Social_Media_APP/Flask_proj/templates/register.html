@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create a New Account</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="register-form">
+      <h2 class="register-title">
+        <img src="{{ url_for('static', filename='images/facebook-logo.png') }}" alt="Facebook Logo" class="logo">
+        Create a New Account
+      </h2>
+        <form method="POST" action="{{ url_for('register') }}" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+          {{ form.first_name.label(class='sr-only') }}
+          {{ form.first_name(class='form-control', placeholder='First Name') }}
+        </div>
+        <div class="form-group">
+          {{ form.last_name.label(class='sr-only') }}
+          {{ form.last_name(class='form-control', placeholder='Last Name') }}
+        </div>
+        <div class="form-group">
+          {{ form.email.label(class='sr-only') }}
+          {{ form.email(class='form-control', placeholder='Email address') }}
+        </div>
+        <div class="form-group">
+          {{ form.password.label(class='sr-only') }}
+          {{ form.password(class='form-control', placeholder='Password') }}
+        </div>
+        <div class="form-group">
+          {{ form.confirm_password.label(class='sr-only') }}
+          {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
+        </div>
+        <div class="form-group">
+    {{ form.profile_picture.label(class='control-label') }}
+    {{ form.profile_picture(class='form-control-file') }}
+  </div>
+
+  <div class="form-group">
+    {{ form.submit(class='btn btn-primary btn-block') }}
+  </div>
+</form>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="alert alert-danger">
+            {{ messages[0] }}
+          </div>
+        {% endif %}
+      {% endwith %}
+      <hr>
+      <div class="text-center">
+        <a href="{{ url_for('login') }}" class="login-link">Already have an account? Log in</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
